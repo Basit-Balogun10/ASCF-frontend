@@ -1,9 +1,14 @@
 module.exports = {
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}"
+    "./pages/**/*.{js, ts, jsx, tsx}",
+    "./components/**/*.{js, ts, jsx, tsx}",
   ],
+  darkMode: 'class',
   theme: {
-    extend: {},
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"]
+    },
   },
   plugins: [],
 }
