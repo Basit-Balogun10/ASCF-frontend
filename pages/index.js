@@ -16,7 +16,9 @@ const Home = () => {
       <Header />
       <HomePage>
         <HomeContent>
-          <Heading>anisa sickle cell foundation</Heading>
+          <Heading>
+            anisa sickle <br></br> cell foundation
+          </Heading>
 
           <AllText>
             <Highlighted>
@@ -31,7 +33,7 @@ const Home = () => {
             focused on reducing prevalence of sickle cell disease to the barest
             minimum.
           </AllText>
-          <LearnBtn>Learn more</LearnBtn>
+          <LearnBtn>LEARN MORE</LearnBtn>
         </HomeContent>
 
         <Mainimage src="/main.jpg" />
@@ -50,15 +52,15 @@ const HomePage = tw.section`
 const HomeContent = tw.div`
  flex-auto
  w-2/5
- p-20
+ p-24
 `;
 
 const Heading = tw.h1`
  capitalize
- text-[48px]
+ text-[40px]
  font-black
  leading-tight
- pb-4
+ pb-6
 `;
 
 const Mainimage = tw.img`
@@ -68,7 +70,8 @@ const Mainimage = tw.img`
 `;
 
 const AllText = tw.p`
- text-[17px]
+ text-[14px]
+ leading-6
  pb-6
 `;
 

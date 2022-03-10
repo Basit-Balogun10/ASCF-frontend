@@ -42,10 +42,11 @@ const NavItems = tw.li`
     ${(p) =>
       p.$primary
         ? 'bg-red-500 px-4 py-2 text-white rounded shadow-md'
-        : 'text-black'}
+        : 'text-red-600'}
     font-bold
     text-sm
     font-roboto
+    cursor-pointer
 `;
 
 export default Header;
