@@ -1,25 +1,25 @@
-import type { NextPage } from 'next'
+import type { NextPage } from "next";
 import Head from 'next/head'
 
+import Header from "../../components/header";
 import tw from "tailwind-styled-components";
-import Header from '../components/header';
 
-const Home: NextPage = () => {
+const Event: NextPage = () => {
   return (
     <Layout>
-       <Head>
-        <title>ASCF</title>
+      <Head>
+        <title>ASCF | Event</title>
         <meta name="description" content="anisa sickle cell foundation" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header/>
     </Layout>
-  )
-}
+  );
+};
 
 const Layout = tw.div`
     h-screen
     bg-black
 `;
 
-export default Home
+export default Event;
