@@ -1,22 +1,22 @@
-import React, { useEffect, useState } from "react";
-import tw from "tailwind-styled-components";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import React, { useEffect, useState } from 'react';
+import tw from 'tailwind-styled-components';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const Header = () => {
-    return (
-        <Wrapper>
-            <Logo>ASCF</Logo>
-            <NavItemsList>
-                <NavItems>ABOUT US</NavItems>
-                <NavItems>BLOG</NavItems>
-                <NavItems >EVENTS</NavItems>
-                <NavItems $primary={true}>SIGN IN</NavItems>
-                <NavItems $primary={true}>SHOP NOW</NavItems>
-            </NavItemsList>
-        </Wrapper>
-    )
-}
+  return (
+    <Wrapper>
+      <Logo>ASCF</Logo>
+      <NavItemsList>
+        <NavItems>ABOUT US</NavItems>
+        <NavItems>BLOG</NavItems>
+        <NavItems>EVENTS</NavItems>
+        <NavItems $primary={true}>SIGN IN</NavItems>
+        <NavItems $primary={true}>SHOP NOW</NavItems>
+      </NavItemsList>
+    </Wrapper>
+  );
+};
 
 const Wrapper = tw.section`
     flex 
@@ -24,6 +24,7 @@ const Wrapper = tw.section`
     justify-between
     items-center
     p-4
+    fixed
 `;
 
 const Logo = tw.div`
@@ -38,10 +39,14 @@ const NavItemsList = tw.ul`
 `;
 
 const NavItems = tw.li`
-    ${(p) => (p.$primary ? "bg-white px-4 py-2 text-red-500 rounded shadow-md" : "")}
+    ${(p) =>
+      p.$primary
+        ? 'bg-red-500 px-4 py-2 text-white rounded shadow-md'
+        : 'text-red-600'}
     font-bold
     text-sm
     font-roboto
+    cursor-pointer
 `;
 
 export default Header;
