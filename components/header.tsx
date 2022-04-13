@@ -23,6 +23,11 @@ const Header = () => {
             <Button>SHOP NOW</Button>
           </Link>
         </NavItem>
+        <NavItem>
+          <Link href="/login">
+            <Button>SIGN IN</Button>
+          </Link>
+        </NavItem>
       </Nav>
       <Menu>
         <svg

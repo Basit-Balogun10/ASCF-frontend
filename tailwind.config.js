@@ -11,6 +11,10 @@ module.exports = {
       'black': '	#141313ff',
       'white': '#FFFFFF',
     },
+    fontFamily: {
+      poppins: ["Poppins", "sans-serif"],
+      roboto: ["Roboto", "sans-serif"]
+    },
     extend: {},
   },
   plugins: [],
