@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from 'next/head'
 
-import Header from "../../components/Header";
+import Header from "../../components/header";
 import tw from "tailwind-styled-components";
 
 const Blog: NextPage = () => {
