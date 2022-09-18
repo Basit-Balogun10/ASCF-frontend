@@ -58,7 +58,8 @@ const Container = tw.section`
 `;
 
 const Logo = tw.h1`
-  text-white
+  text-black
+  dark:text-white
   text-3xl
   font-semibold
   cursor-pointer
