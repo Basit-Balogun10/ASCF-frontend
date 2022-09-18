@@ -1,20 +1,23 @@
 import type { NextPage } from "next";
-import Head from 'next/head'
+import Head from "next/head";
 
-import Header from "../../components/header";
+import Header from "../../components/Header";
 import tw from "tailwind-styled-components";
 
 const Blog: NextPage = () => {
-  return (
-    <Layout>
-      <Head>
-        <title>ASCF | Event</title>
-        <meta name="description" content="anisa sickle cell foundation" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Header/>
-    </Layout>
-  );
+    return (
+        <Layout>
+            <Head>
+                <title>ASCF | Event</title>
+                <meta
+                    name="description"
+                    content="anisa sickle cell foundation"
+                />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Header />
+        </Layout>
+    );
 };
 
 const Layout = tw.div`
