@@ -2,13 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 
 import Header from "../../components/Header";
-import tw from "tailwind-styled-components";
 
 const Blog: NextPage = () => {
     return (
-        <Layout>
+        <div className="h-screen bg-black">
             <Head>
-                <title>ASCF | Event</title>
+                <title>ASCF | Blog</title>
                 <meta
                     name="description"
                     content="anisa sickle cell foundation"
@@ -16,13 +15,8 @@ const Blog: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <Header />
-        </Layout>
+        </div>
     );
 };
-
-const Layout = tw.div`
-    h-screen
-    bg-black
-`;
 
 export default Blog;

@@ -1,101 +1,146 @@
 import Link from "next/link";
-import tw from "tailwind-styled-components";
 
 const Header = () => {
-  return (
-    <Container>
-      <Logo>ASCF</Logo>
-      <Nav>
-        <NavItem>
-          <Link href="/">HOME</Link>
-        </NavItem>
-        <NavItem>
-          <Link href="/about">ABOUT US</Link>
-        </NavItem>
-        <NavItem>
-          <Link href="/blog">BLOG</Link>
-        </NavItem>
-        <NavItem>
-          <Link href="/event">EVENTS</Link>
-        </NavItem>
-        <NavItem>
-          <Link href="/shop">
-            <Button>SHOP NOW</Button>
-          </Link>
-        </NavItem>
-        <NavItem>
-          <Link href="/login">
-            <Button>SIGN IN</Button>
-          </Link>
-        </NavItem>
-      </Nav>
-      <Menu>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="white"
-          strokeWidth={2}
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M4 6h16M4 12h16M4 18h16"
-          />
-        </svg>
-      </Menu>
-    </Container>
-  );
-};
-
-const Container = tw.section`
-    flex
+    return (
+        <section
+            className="flex
     justify-between
     items-center
     px-8
-    py-8
-`;
-
-const Logo = tw.h1`
-  text-black
+    py-8"
+        >
+            <h1
+                className="text-black
   dark:text-white
   text-3xl
   font-semibold
   cursor-pointer
-  hover:text-red
-`;
-
-const Nav = tw.ul`
-  flex
-  items-center
-`;
-
-const NavItem = tw.li`
-  hidden
-  lg:block
+  hover:text-ourRed"
+            >
+                ASCF
+            </h1>
+            <ul
+                className="flex
+  items-center"
+            >
+                <li
+                    className="hidden
+  md:block
   text-white
   text-base
   font-semibold
   ml-6
   cursor-pointer
-  hover:text-red
-  
-`;
-
-const Menu = tw.div`
-  flex
-  lg:hidden
-`;
-
-const Button = tw.button`
-  bg-white
+  hover:text-ourRed"
+                >
+                    <Link href="/">HOME</Link>
+                </li>
+                <li
+                    className="hidden
+  md:block
+  text-white
+  text-base
+  font-semibold
+  ml-6
+  cursor-pointer
+  hover:text-ourRed"
+                >
+                    <Link href="/about">ABOUT US</Link>
+                </li>
+                <li
+                    className="hidden
+  md:block
+  text-white
+  text-base
+  font-semibold
+  ml-6
+  cursor-pointer
+  hover:text-ourRed"
+                >
+                    <Link href="/blog">BLOG</Link>
+                </li>
+                <li
+                    className="hidden
+  md:block
+  text-white
+  text-base
+  font-semibold
+  ml-6
+  cursor-pointer
+  hover:text-ourRed"
+                >
+                    <Link href="/event">EVENTS</Link>
+                </li>
+                <li
+                    className="hidden
+  md:block
+  text-white
+  text-base
+  font-semibold
+  ml-6
+  cursor-pointer
+  hover:text-ourRed"
+                >
+                    <Link href="/shop">
+                        <button
+                            className="bg-white
   rounded
-  text-red
+  text-ourRed
   text-base
   font-bold
   px-3
-  py-2
-`;
+  py-2"
+                        >
+                            SHOP NOW
+                        </button>
+                    </Link>
+                </li>
+                <li
+                    className="hidden
+  md:block
+  text-white
+  text-base
+  font-semibold
+  ml-6
+  cursor-pointer
+  hover:text-ourRed"
+                >
+                    <Link href="/login">
+                        <button
+                            className="bg-white
+  rounded
+  text-ourRed
+  text-base
+  font-bold
+  px-3
+  py-2"
+                        >
+                            SIGN IN
+                        </button>
+                    </Link>
+                </li>
+            </ul>
+            <div
+                className="flex
+  md:hidden"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-6 w-6"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="white"
+                    strokeWidth={2}
+                >
+                    <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 6h16M4 12h16M4 18h16"
+                    />
+                </svg>
+            </div>
+        </section>
+    );
+};
 
 export default Header;
