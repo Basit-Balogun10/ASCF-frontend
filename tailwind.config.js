@@ -8,12 +8,12 @@ module.exports = {
     theme: {
         extend: {
             colors: {
-                ourRed: "	 #ED1010ff",
-                ourBlack: "	#141313ff",
+                ourRed: "#ec1717",
+                ourBlack: "#1b1a1a",
             },
             fontFamily: {
                 poppins: ["Poppins", "sans-serif"],
-                roboto: ["Roboto", "sans-serif"],
+                inter: ["Inter", "sans-serif"],
             },
         },
     },

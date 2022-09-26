@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
+import styles from "../styles/Home.module";
+import Header from "../components/Header";
 
 const Home = () => {
     return (
@@ -13,65 +15,47 @@ const Home = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
-            <section
-                className="w-screen
- flex
- h-screen
- overflow-hidden"
-            >
-                <div
-                    className="flex-auto
- w-2/5
- p-24"
-                >
-                    <h1
-                        className="capitalize
- text-[40px]
- font-black
- leading-tight
- pb-6"
-                    >
-                        anisa sickle <br></br> cell foundation
-                    </h1>
+            <section className="w-full h-screen relative">
+                <Header isHomePage={true} />
+                <section className="flex">
+                    <div className="w-2/5">
+                        <div className="w-2/3 mx-auto">
+                            <h1 className="capitalize text-4xl font-black leading-tight pb-6">
+                                anisa sickle <br></br> cell foundation
+                            </h1>
 
-                    <p
-                        className="text-[14px]
- leading-6
- pb-6"
-                    >
-                        <span className="font-extrabold">
-                            Anisa Sickle-Cell Foundation is a non-profit
-                            organization locally based in Nigeria, advocating
-                            for a sickle-cell free generation.&nbsp;
-                        </span>
-                        It intends to also serve as a psychosocial support for
-                        individuals living with sickle cell disease and to
-                        facilitate enacting of inclusive policies at local and
-                        national levels. The big picture we aspire to work
-                        toward is being a fore frontier promoting initiatives
-                        focused on reducing prevalence of sickle cell disease to
-                        the barest minimum.
-                    </p>
-                    <button
-                        className="bg-red-500
-  px-4 py-2 
-  text-white 
-  rounded 
-  shadow-md
-  font-bold
-  text-sm
-  font-roboto"
-                    >
-                        LEARN MORE
-                    </button>
-                </div>
+                            <p className="pb-6 text-sm font-extrabold leading-6">
+                                <span className="">
+                                    Anisa Sickle-Cell Foundation is a non-profit
+                                    organization locally based in Nigeria,
+                                    advocating for a sickle-cell free
+                                    generation.&nbsp;
+                                </span>
+                                <span className="text-gray-800 dark:text-stone-400/80">
+                                    It intends to also serve as a psychosocial
+                                    support for individuals living with sickle
+                                    cell disease and to facilitate enacting of
+                                    inclusive policies at local and national
+                                    levels. The big picture we aspire to work
+                                    toward is being a fore frontier promoting
+                                    initiatives focused on reducing prevalence
+                                    of sickle cell disease to the barest
+                                    minimum.
+                                </span>
+                            </p>
+                            <button className="px-6 py-2 bg-ourRed hover:bg-red-600/95 text-white text-[0.65rem] leading-5 font-extrabold rounded shadow-md transition-colors">
+                                LEARN MORE
+                            </button>
+                        </div>
+                    </div>
 
-                <img
-                    className="flex-auto
- w-3/5
- h-screen"
-                    src="/main.jpg"
-                />
+                    <div
+                        className="w-3/5 absolute top-0 right-0 h-full bg-blend-overlay bg-no-repeat bg-center bg-contain"
+                        style={styles.hero}
+                    >
+                        <Header displayLogo={false} />
+                    </div>
+                </section>
             </section>
         </>
     );

@@ -4,7 +4,11 @@ import Footer from "./Footer";
 import { ThemeProvider } from "../contexts/ThemeContext";
 
 type propsType = {
-    children: React.ReactNode;
+    children: React.ReactNode & {
+        type: {
+            name: string;
+        };
+    };
 };
 
 const Layout = ({ children }: propsType) => {
@@ -20,7 +24,7 @@ const Layout = ({ children }: propsType) => {
         } else {
             document.documentElement.classList.remove("dark");
         }
-        console.log('called')
+        console.log("called");
     }, []);
 
     const toggleThemeMode = () => {
@@ -33,12 +37,18 @@ const Layout = ({ children }: propsType) => {
             localStorage.setItem("ascf-theme", "dark");
         }
     };
+
     return (
         <>
             <ThemeProvider value={{ theme, setTheme, toggleThemeMode }}>
-                <button className="bg-red-500 dark:bg-blue-500 hidden" onClick={toggleThemeMode}>CHANGE THEME</button>
-                <Header />
+                {children.type.name !== "Home" && <Header />}
                 {children}
+                <button
+                    className="bg-red-500 dark:bg-blue-500"
+                    onClick={toggleThemeMode}
+                >
+                    CHANGE THEME
+                </button>
                 <Footer />
             </ThemeProvider>
         </>
