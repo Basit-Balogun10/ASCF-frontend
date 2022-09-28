@@ -17,8 +17,8 @@ const Home = () => {
 
             <section className="w-full h-screen relative">
                 <Header isHomePage={true} />
-                <section className="flex">
-                    <div className="w-2/5">
+                <section className="flex my-12">
+                    <div className="w-2/5 px-8">
                         <div className="w-2/3 mx-auto">
                             <h1 className="capitalize text-4xl font-black leading-tight pb-6">
                                 anisa sickle <br></br> cell foundation
@@ -43,7 +43,7 @@ const Home = () => {
                                     minimum.
                                 </span>
                             </p>
-                            <button className="px-6 py-2 bg-ourRed hover:bg-red-600/95 text-white text-[0.65rem] leading-5 font-extrabold rounded shadow-md transition-colors">
+                            <button className="px-6 py-2 bg-ourRed hover:bg-red-700 text-white text-[0.65rem] leading-5 font-extrabold rounded shadow-md transition-colors">
                                 LEARN MORE
                             </button>
                         </div>

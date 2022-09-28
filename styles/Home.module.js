@@ -1,9 +1,6 @@
 const styles = {
     hero: {
-        background: "url('/images/home-1.jpg') #4b0202f5",
-    },
-    logo: {
-        background: "url('/images/logo.jpg') #000",
+        background: "url('/images/home-1.png') #4b0202f5",
     },
 };
 
