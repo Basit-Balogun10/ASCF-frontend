@@ -9,6 +9,7 @@ module.exports = {
         extend: {
             colors: {
                 ourRed: "#ec1717",
+                ourDarkRed: "#ca0909",
                 ourBlack: "#1b1a1a",
             },
             fontFamily: {

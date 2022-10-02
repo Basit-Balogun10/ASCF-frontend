@@ -1,3 +1,4 @@
+import {useEffect} from "react"
 import Link from "next/link";
 import Image from "next/image";
 
@@ -6,12 +7,47 @@ type propsType = {
     isHomePage?: boolean;
 };
 
+interface navLinksType {
+    title: string;
+    urlFragment: string;
+    isActive: boolean;
+}
+console.log(global.window?.location.href.includes("about"), 'fsaffsafd');
+const navLinks = [
+    {
+        title: "home",
+        urlFragment: "",
+        isActive: global.window?.location.href.includes(""),
+    },
+    {
+        title: "about us",
+        urlFragment: "about",
+        isActive: global.window?.location.href.includes("about"),
+    },
+    {
+        title: "blog",
+        urlFragment: "blog",
+        isActive: global.window?.location.href.includes("blog"),
+    },
+    {
+        title: "events",
+        urlFragment: "events",
+        isActive: global.window?.location.href.includes("events"),
+    },
+];
+
 const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
+    let activeNavLink = '';
+
+    useEffect(() => {
+        
+    }, [])
+
     return (
         <nav
             className={`flex ${
                 displayLogo ? "justify-between" : "justify-end py-8"
-            } h-24 items-center px-4`}
+            } h-24 items-center pl-4 pr-12`}
         >
             {displayLogo && (
                 <Link href="/" passHref>
@@ -30,42 +66,19 @@ const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
             )}
             {!isHomePage && (
                 <ul className={`flex flex-wrap items-center`}>
+                    { navLinks.map((navLink, index) => (
+                    <Link href={`/${navLink.urlFragment}`} passHref key={index}>
                     <li
                         className={`hidden md:block hover:px-4 hover:bg-red-100/50 hover:py-1 ${
                             !isHomePage && displayLogo
                                 ? "dark:text-white text-ourBlack"
                                 : "text-white"
-                        } text-[0.8rem] tracking-wide font-extrabold ml-6 cursor-pointer rounded-md transition-all ease-in-out`}
+                        } text-[0.8rem] tracking-wide ${( navLink.isActive || (navLink.title === "home" && isHomePage)) && "underline decoration-ourRed decoration-4 underline-offset-4"} hover:no-underline font-extrabold ml-6 cursor-pointer rounded-md transition-all ease-in-out`}
                     >
-                        <Link href="/">HOME</Link>
+                        <p>{navLink.title.toUpperCase()}</p>
                     </li>
-                    <li
-                        className={`hidden md:block hover:px-4 hover:bg-red-100/50 hover:py-1 ${
-                            !isHomePage && displayLogo
-                                ? "dark:text-white text-ourBlack"
-                                : "text-white"
-                        } text-[0.8rem] tracking-wide font-extrabold ml-6 cursor-pointer rounded-md transition-all ease-in-out`}
-                    >
-                        <Link href="/about">ABOUT US</Link>
-                    </li>
-                    <li
-                        className={`hidden md:block hover:px-4 hover:bg-red-100/50 hover:py-1 ${
-                            !isHomePage && displayLogo
-                                ? "dark:text-white text-ourBlack"
-                                : "text-white"
-                        } text-[0.8rem] tracking-wide font-extrabold ml-6 cursor-pointer rounded-md transition-all ease-in-out`}
-                    >
-                        <Link href="/blog">BLOG</Link>
-                    </li>
-                    <li
-                        className={`hidden md:block hover:px-4 hover:bg-red-100/50 hover:py-1 ${
-                            !isHomePage && displayLogo
-                                ? "dark:text-white text-ourBlack"
-                                : "text-white"
-                        } text-[0.8rem] tracking-wide font-extrabold ml-6 cursor-pointer rounded-md transition-all ease-in-out`}
-                    >
-                        <Link href="/event">EVENTS</Link>
-                    </li>
+                    </Link>
+                    )) }
                     <li className="hidden md:block ml-6 px-3 py-2 hover:bg-red-100 bg-white text-ourRed text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
                         <Link href="/shop">SHOP NOW</Link>
                     </li>
