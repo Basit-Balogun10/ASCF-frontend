@@ -11,19 +11,20 @@ class MyDocument extends Document {
                     />
                     <link
                         href="https://fonts.gstatic.com"
-                        crossorigin
+                        rel="preconnect"
+                        crossOrigin=""
                     />
                     <link
-                        href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto&display=swap"
+                        href="https://fonts.googleapis.com/css2?family=Poppins&family=Inter&display=swap"
                         rel="stylesheet"
                     />
                 </Head>
-                <body>
+                <body className="dark:bg-ourBlack dark:text-white">
                     <Main />
                     <NextScript />
                 </body>
             </Html>
-        )
+        );
     }
 }
 
