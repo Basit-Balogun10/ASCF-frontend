@@ -55,18 +55,18 @@ const Blog: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <section className="w-full">
-                <section className="bg-ourDarkRed px-12 py-8">
-                    <h1 className="font-bold text-lg">ASCF BLOG</h1>
+                <section className="bg-ourDarkRed px-20 py-8">
+                    <h1 className="font-bold text-4xl">ASCF BLOG</h1>
                     <h3>
                         Stay up-to-date on the progression and treatment of
                         Sickle Cell Disease
                     </h3>
                 </section>
-                <section className="w-full">
+                <section className="w-full px-20 items-center">
                     {blogPosts.map((post) => (
-                        <div key={post.id}>
-                            <div>
-                                <div className="bg-ourDarkRed"></div>
+                        <div key={post.id} className="mt-12">
+                            <div className="flex justify-start space-x-8">
+                                <div className="w-2 h-12 bg-ourDarkRed"></div>
                                 <div>
                                     <h2>{post.title}</h2>
                                     <h3>
