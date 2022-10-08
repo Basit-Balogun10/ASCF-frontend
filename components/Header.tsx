@@ -64,10 +64,6 @@ const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
                         className="cursor-pointer bg-transparent border-none"
                         alt="ASCF Logo"
                     />
-                    {/* <div
-                            className="w-24 h-24 bg-blend-overlay bg-no-repeat bg-center bg-contain"
-                            style={styles.logo}
-                        ></div> */}
                 </Link>
             )}
             {!isHomePage && (

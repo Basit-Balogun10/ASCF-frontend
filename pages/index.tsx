@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Head from "next/head";
-import styles from "../styles/Home.module";
+import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
 
 const Home = () => {
@@ -50,8 +50,7 @@ const Home = () => {
                     </div>
 
                     <div
-                        className="w-3/5 absolute top-0 right-0 h-full bg-blend-overlay bg-no-repeat bg-center bg-contain"
-                        style={styles.hero}
+                        className={`${styles.hero} w-3/5 absolute top-0 right-0 h-full bg-blend-overlay bg-no-repeat bg-center bg-contain`}
                     >
                         <Header displayLogo={false} />
                     </div>
