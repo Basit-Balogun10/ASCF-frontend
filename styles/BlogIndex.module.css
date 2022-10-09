@@ -1,0 +1,17 @@
+.postBody {
+    --max-lines: 3;
+    --lh: 1.5rem;
+    --horizontal-padding: 2.5rem;
+    padding: 0px var(--horizontal-padding);
+    line-height: var(--lh);
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    position: relative;
+}
+
+.postBody::before {
+    content: "....";
+    position: absolute;
+    bottom: 0;
+    right: calc(var(--horizontal-padding) * 1);
+}

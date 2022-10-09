@@ -24,11 +24,9 @@ const Layout = ({ children }: propsType) => {
         } else {
             document.documentElement.classList.remove("dark");
         }
-        console.log("called");
     }, []);
 
     const toggleThemeMode = () => {
-        console.log("called2");
         if (document.documentElement.classList.contains("dark")) {
             document.documentElement.classList.remove("dark");
             localStorage.setItem("ascf-theme", "light");
