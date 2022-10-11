@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
+import CommonButton from "../components/CommonButton"
 
 const Home = () => {
+
     return (
         <>
             <Head>
@@ -43,14 +45,10 @@ const Home = () => {
                                     minimum.
                                 </span>
                             </p>
-                            <div className="flex items-center justify-start space-x-4">
-                                <button className="px-6 py-2 bg-ourRed hover:bg-red-700 text-white text-[0.65rem] leading-5 font-extrabold rounded shadow-md transition-colors">
-                                    BECOME A SPONSOR
-                                </button>
-                                <button className="px-6 py-2 bg-transparent border border-ourRed hover:border-bg-red-700 hover:border-red-700 hover:text-gray-200 text-white text-[0.65rem] leading-5 font-extrabold rounded shadow-md transition-trasnform">
-                                    LEARN MORE
-                                </button>
-                            </div>
+                            <CommonButton
+                                buttonText="LEARN MORE"
+                                isPrimary={true}
+                            />
                         </div>
                     </div>
 

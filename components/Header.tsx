@@ -13,7 +13,7 @@ interface navLinksType {
     isActive: boolean;
 }
 
-// WHERE TO PUT THIS? HERE OR IN COMPONENT (BEFORE USEEFECT)
+// todo: WHERE TO PUT THIS? HERE OR IN COMPONENT (BEFORE USEEFECT)
 const navLinks = [
     {
         title: "home",
@@ -117,3 +117,4 @@ const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
 };
 
 export default Header;
+// todo: Use the useRef hook for the list of navigation items

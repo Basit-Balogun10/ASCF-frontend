@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { ThemeProvider } from "../contexts/ThemeContext";
+import FloatingSupport from "./FloatingSupport";
 
 type propsType = {
     children: React.ReactNode & {
@@ -13,6 +14,8 @@ type propsType = {
 
 const Layout = ({ children }: propsType) => {
     const [theme, setTheme] = useState<string>("light");
+    const [supportModalOpened, setSupportModalOpened] = useState<boolean>(false);
+
     useEffect(() => {
         if (
             localStorage.getItem("ascf-theme") === "dark" ||
@@ -40,6 +43,7 @@ const Layout = ({ children }: propsType) => {
         <>
             <ThemeProvider value={{ theme, setTheme, toggleThemeMode }}>
                 {children.type.name !== "Home" && <Header />}
+                <FloatingSupport />
                 {children}
                 <button
                     className="bg-red-500 dark:bg-blue-500"

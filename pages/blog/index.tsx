@@ -88,21 +88,21 @@ const Blog: NextPage = () => {
                                 onFocus={() => setSearchInputFocused(true)}
                                 onBlur={() => setSearchInputFocused(false)}
                                 placeholder="Search"
-                                className="w-full h-12 px-4 font-poppins dark:bg-ourBlack dark:border-gray-300/50 border-2 appearance-none focus:outline-none rounded-lg"
+                                className="w-full h-10 px-4 font-poppins dark:bg-ourBlack dark:border-gray-100 appearance-none focus:outline-none rounded-lg"
                             />
                             {!searchInputFocused && (
-                                <GoSearch className="absolute w-6 h-6 top-3 right-4" />
+                                <GoSearch className="absolute w-5 h-5 top-3 right-4" />
                             )}
                         </div>
                         <div className="relative">
                             <label className="mr-2">Sort by:</label>
-                            <select className="w-28 p-2 dark:bg-ourBlack dark:border-gray-300/50 border-2 appearance-none cursor-pointer focus:outline-none rounded-lg">
+                            <select className="w-24 p-2 dark:bg-ourBlack appearance-none cursor-pointer focus:outline-none rounded-lg">
                                 <option>Title</option>
                                 <option>Date</option>
                                 <option>Likes</option>
                                 <option>Reads</option>
                             </select>
-                            <FiArrowDown className="absolute w-4 h-4 top-4 right-2" />
+                            <FiArrowDown className="absolute w-4 h-4 top-3 right-2" />
                         </div>
                     </div>
                 </section>
@@ -114,26 +114,26 @@ const Blog: NextPage = () => {
                                     <div className="flex justify-start items-center space-x-8">
                                         <div className="w-3 h-10 bg-ourRed"></div>
                                         <div>
-                                            <h2 className="font-bold text-xl text-gray-200">
+                                            <h2 className="font-bold text-xl dark:text-gray-200">
                                                 {post.title}
                                             </h2>
-                                            <h3 className="italic text text-gray-200">
+                                            <h3 className="italic dark:text-gray-200">
                                                 {post.date} by {post.author}
                                             </h3>
                                         </div>
                                     </div>
                                     <p
-                                        className={`${styles.postBody} text-sm font-medium dark:text-stone-400/80 group-hover:text-ourRed transition-colors`}
+                                        className={`${styles.postBody} text-sm font-medium text-gray-800 dark:text-stone-400/80 group-hover:text-ourRed transition-colors`}
                                     >
                                         {post.body}
                                     </p>
                                 </div>
 
-                                <img
-                                    src={post.imageUrl}
-                                    className="w-1/5 h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
-                                    alt={post.imageAltText}
-                                />
+                                    <img
+                                        src={post.imageUrl}
+                                        className="w-1/5 h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
+                                        alt={post.imageAltText}
+                                    />
                             </div>
                         </Link>
                     ))}
@@ -144,3 +144,4 @@ const Blog: NextPage = () => {
 };
 
 export default Blog;
+// todo: See how to optimize img elements with picture elements or using the Image component
