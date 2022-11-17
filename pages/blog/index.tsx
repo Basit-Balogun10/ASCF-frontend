@@ -1,10 +1,13 @@
-import { useState, useRef } from "react"
+import { useState, useRef } from "react";
 import type { NextPage } from "next";
 import Link from "next/link";
-import { GoSearch } from "react-icons/go"
-import { FiArrowDown } from "react-icons/fi"
 import Head from "next/head";
+
+import { GoSearch } from "react-icons/go";
+import { FiArrowDown, FiXCircle } from "react-icons/fi";
+
 import styles from "../../styles/BlogIndex.module.css";
+import { capitalizeString } from "../../utils"
 
 interface blogPostsType {
     id: string;
@@ -14,6 +17,11 @@ interface blogPostsType {
     body: string;
     imageUrl: string;
     imageAltText: string;
+}
+
+interface sortOptionsType {
+    id: string;
+    optionName: string;
 }
 
 const articleText =
@@ -58,10 +66,34 @@ const blogPosts: blogPostsType[] = [
     },
 ];
 
+const sortOptions: sortOptionsType[] = [
+    {
+        id: "1",
+        optionName: "title",
+    },
+    {
+        id: "2",
+        optionName: "date",
+    },
+    {
+        id: "3",
+        optionName: "likes",
+    },
+    {
+        id: "4",
+        optionName: "reads",
+    },
+];
+
 const Blog: NextPage = () => {
-    const searchInput = useRef<HTMLInputElement | null>(null)
-    const [searchInputFocused, setSearchInputFocused] = useState<boolean | null>(null)
+    const searchInput = useRef<HTMLInputElement | null>(null);
+    const [searchInputFocused, setSearchInputFocused] = useState<
+        boolean | null
+    >(null);
+    const [searchText, setSearchText] = useState<string>("");
+    const [dropdownToggled, setDropdownToggled] = useState<boolean>(false);
     
+
     return (
         <>
             <Head>
@@ -87,22 +119,62 @@ const Blog: NextPage = () => {
                                 ref={searchInput}
                                 onFocus={() => setSearchInputFocused(true)}
                                 onBlur={() => setSearchInputFocused(false)}
+                                value={searchText}
+                                onChange={(e) => setSearchText(e.target.value)}
                                 placeholder="Search"
-                                className="w-full h-10 px-4 font-poppins dark:bg-ourBlack dark:border-gray-100 appearance-none focus:outline-none rounded-lg"
+                                className="w-full h-10 py-1 px-10 text-sm font-poppins dark:bg-ourBlack dark:border-gray-100 appearance-none focus:outline-none rounded-full"
                             />
-                            {!searchInputFocused && (
-                                <GoSearch className="absolute w-5 h-5 top-3 right-4" />
+                            <GoSearch className="absolute w-4 h-4 top-3 left-4 text-gray-400" />
+                            {searchText && (
+                                <FiXCircle
+                                    onClick={() => setSearchText("")}
+                                    className="absolute w-5 h-5 top-[0.65rem] right-4 text-ourDarkRed hover:text-ourRed cursor-pointer transition-all ease-in-out"
+                                />
                             )}
                         </div>
                         <div className="relative">
-                            <label className="mr-2">Sort by:</label>
-                            <select className="w-24 p-2 dark:bg-ourBlack appearance-none cursor-pointer focus:outline-none rounded-lg">
-                                <option>Title</option>
-                                <option>Date</option>
-                                <option>Likes</option>
-                                <option>Reads</option>
-                            </select>
-                            <FiArrowDown className="absolute w-4 h-4 top-3 right-2" />
+                            <div
+                                onClick={() => {
+                                    setDropdownToggled(!dropdownToggled);
+                                }}
+                                className="bg-white dark:bg-ourBlack w-[6.5rem] p-2 flex items-center justify-between rounded-md cursor-pointer"
+                            >
+                                <p className="text-sm">Sort by:</p>
+                                <FiArrowDown className="absolute w-4 h-4 top-3 right-2" />
+                            </div>
+
+                            {dropdownToggled && (
+                                <div className="mt-4 bg-white dark:bg-ourBlack rounded-md">
+                                    <ul className="space-y-1">
+                                        {sortOptions.map((sortOption) => (
+                                            <Link
+                                                key={sortOption.id}
+                                                href="/"
+                                                passHref
+                                            >
+                                                <li
+                                                    className={`hover:bg-gray-200 dark:hover:bg-gray-100/20 ${
+                                                        sortOption.id === "1" &&
+                                                        "rounded-t-md pt-1"
+                                                    } ${
+                                                        sortOption.id ===
+                                                            String(
+                                                                sortOptions.length
+                                                            ) &&
+                                                        "rounded-b-md pb-1"
+                                                    } cursor-pointer`}
+                                                >
+                                                    <p className="px-2 text-sm">
+                                                        {capitalizeString(
+                                                            sortOption.optionName
+                                                        )}
+                                                    </p>
+                                                </li>
+                                            </Link>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </section>
@@ -129,11 +201,11 @@ const Blog: NextPage = () => {
                                     </p>
                                 </div>
 
-                                    <img
-                                        src={post.imageUrl}
-                                        className="w-1/5 h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
-                                        alt={post.imageAltText}
-                                    />
+                                <img
+                                    src={post.imageUrl}
+                                    className="w-1/5 h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
+                                    alt={post.imageAltText}
+                                />
                             </div>
                         </Link>
                     ))}
