@@ -4,7 +4,8 @@ import Link from "next/link";
 import Head from "next/head";
 
 import { GoSearch } from "react-icons/go";
-import { FiArrowDown, FiXCircle } from "react-icons/fi";
+import { FiXCircle } from "react-icons/fi";
+import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 import styles from "../../styles/BlogIndex.module.css";
 import { capitalizeString } from "../../utils"
@@ -137,14 +138,18 @@ const Blog: NextPage = () => {
                                 onClick={() => {
                                     setDropdownToggled(!dropdownToggled);
                                 }}
-                                className="bg-white dark:bg-ourBlack w-[6.5rem] p-2 flex items-center justify-between rounded-md cursor-pointer"
+                                className="w-[6.5rem] p-2 flex items-center justify-between bg-white dark:bg-ourBlack rounded-md cursor-pointer"
                             >
                                 <p className="text-sm">Sort by:</p>
-                                <FiArrowDown className="absolute w-4 h-4 top-3 right-2" />
+                                {dropdownToggled ? (
+                                    <MdKeyboardArrowUp className="absolute w-4 h-4 top-3 right-2" />
+                                ) : (
+                                    <MdKeyboardArrowDown className="absolute w-4 h-4 top-3 right-2" />
+                                )}
                             </div>
 
                             {dropdownToggled && (
-                                <div className="mt-4 bg-white dark:bg-ourBlack rounded-md">
+                                <div className="mt-4 bg-white dark:bg-ourBlack border border-gray-400 dark:border-gray-100/30 rounded-md shadow-md">
                                     <ul className="space-y-1">
                                         {sortOptions.map((sortOption) => (
                                             <Link
@@ -162,7 +167,7 @@ const Blog: NextPage = () => {
                                                                 sortOptions.length
                                                             ) &&
                                                         "rounded-b-md pb-1"
-                                                    } cursor-pointer`}
+                                                    } cursor-pointer transitions-color ease-in-out`}
                                                 >
                                                     <p className="px-2 text-sm">
                                                         {capitalizeString(
