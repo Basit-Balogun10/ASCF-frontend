@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { IoMdMoon, IoMdSunny } from "react-icons/io";
+
+import themeContext from "../contexts/ThemeContext"
 
 type propsType = {
     displayLogo?: boolean;
-    isHomePage?: boolean;
+    displayNavBar?: boolean;
 };
 
 interface navLinksType {
@@ -37,8 +40,9 @@ const navLinks = [
     },
 ];
 
-const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
+const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
     const [activeNavLink, setActiveNavLink] = useState<null | string>();
+    const {theme, setTheme, toggleThemeMode} = useContext(themeContext)
 
     // REVIEW DEPENDENCY ARRAYS DOCS
     useEffect(() => {
@@ -66,7 +70,7 @@ const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
                     />
                 </Link>
             )}
-            {!isHomePage && (
+            {!displayNavBar && (
                 <ul className={`flex flex-wrap items-center`}>
                     {navLinks.map((navLink, index) => (
                         <Link
@@ -76,7 +80,7 @@ const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
                         >
                             <li
                                 className={`hidden md:block hover:px-4 hover:bg-red-100/50 hover:py-1 ${
-                                    !isHomePage && displayLogo
+                                    !displayNavBar && displayLogo
                                         ? "dark:text-white text-ourBlack"
                                         : "text-white"
                                 } text-[0.8rem] tracking-wide ${
@@ -94,6 +98,25 @@ const Header = ({ isHomePage = false, displayLogo = true }: propsType) => {
                     <li className="hidden md:block ml-6 px-5 py-2 hover:bg-red-100 bg-white text-ourRed text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
                         <Link href="/login">SIGN IN</Link>
                     </li>
+                    {theme == "light" ? (
+                        <IoMdMoon
+                            className={`w-8 h-8 ml-6 p-1 ${
+                                !displayNavBar && displayLogo
+                                    ? "dark:text-white text-ourBlack hover:bg-red-200/50 dark:hover:bg-gray-100/50"
+                                    : "text-white hover:bg-gray-100/50"
+                            } hover:bg-gray-100/50 rounded-md cursor-pointer transition-colors ease-in-out`}
+                            onClick={toggleThemeMode}
+                        />
+                    ) : (
+                        <IoMdSunny
+                            className={`w-8 h-8 ml-6 p-1 ${
+                                !displayNavBar && displayLogo
+                                    ? "dark:text-white text-ourBlack hover:bg-gray-500 dark:hover:bg-gray-100/50"
+                                    : "text-white hover:bg-gray-100/50"
+                            } rounded-md cursor-pointer transition-colors ease-in-out`}
+                            onClick={toggleThemeMode}
+                        />
+                    )}
                 </ul>
             )}
             <div className="flex md:hidden">

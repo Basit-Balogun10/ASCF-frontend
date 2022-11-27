@@ -1,12 +1,12 @@
 import { createContext } from "react";
 
-interface ThemeContextInterface {
+interface ThemeContextType {
     theme: string;
     setTheme: (theme: string) => void;
     toggleThemeMode: () => void;
 }
 
-const ThemeContext = createContext<null | ThemeContextInterface>(null);
+const ThemeContext = createContext<ThemeContextType>({} as ThemeContextType);
 
 export const ThemeProvider = ThemeContext.Provider
 export default ThemeContext

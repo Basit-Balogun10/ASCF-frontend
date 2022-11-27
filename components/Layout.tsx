@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
 import { ThemeProvider } from "../contexts/ThemeContext";
-import FloatingSupport from "./FloatingSupport";
+import SupportDialogBox from "./SupportDialogBox";
+import CookieDialogBox from "./CookieDialogBox";
 
 type propsType = {
     children: React.ReactNode & {
@@ -14,7 +15,8 @@ type propsType = {
 
 const Layout = ({ children }: propsType) => {
     const [theme, setTheme] = useState<string>("light");
-    const [supportModalOpened, setSupportModalOpened] = useState<boolean>(false);
+    const [supportModalOpened, setSupportModalOpened] =
+        useState<boolean>(false);
 
     useEffect(() => {
         if (
@@ -33,9 +35,11 @@ const Layout = ({ children }: propsType) => {
         if (document.documentElement.classList.contains("dark")) {
             document.documentElement.classList.remove("dark");
             localStorage.setItem("ascf-theme", "light");
+            setTheme("light");
         } else {
             document.documentElement.classList.add("dark");
             localStorage.setItem("ascf-theme", "dark");
+            setTheme("dark");
         }
     };
 
@@ -43,14 +47,9 @@ const Layout = ({ children }: propsType) => {
         <>
             <ThemeProvider value={{ theme, setTheme, toggleThemeMode }}>
                 {children.type.name !== "Home" && <Header />}
-                <FloatingSupport />
+                <CookieDialogBox />
+                <SupportDialogBox />
                 {children}
-                <button
-                    className="bg-red-500 dark:bg-blue-500"
-                    onClick={toggleThemeMode}
-                >
-                    CHANGE THEME
-                </button>
                 <Footer />
             </ThemeProvider>
         </>

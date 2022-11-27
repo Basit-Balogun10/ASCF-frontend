@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Header from "../components/Header";
-import CommonButton from "../components/CommonButton"
+import CommonButton from "../components/CommonButton";
 
 const Home = () => {
-
     return (
         <>
             <Head>
@@ -18,7 +17,7 @@ const Home = () => {
             </Head>
 
             <section className="w-full h-screen relative">
-                <Header isHomePage={true} />
+                <Header displayNavBar={true} />
                 <section className="flex my-12">
                     <div className="w-2/5 px-8">
                         <div className="w-2/3 mx-auto">
@@ -48,6 +47,7 @@ const Home = () => {
                             <CommonButton
                                 buttonText="LEARN MORE"
                                 isPrimary={true}
+                                onClickHandler={() => {}}
                             />
                         </div>
                     </div>
