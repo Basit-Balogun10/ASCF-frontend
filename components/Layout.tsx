@@ -15,10 +15,10 @@ type propsType = {
 
 const Layout = ({ children }: propsType) => {
     const [theme, setTheme] = useState<string>("light");
-    const [supportModalOpened, setSupportModalOpened] =
-        useState<boolean>(false);
+    const [displayCookieDialogBox, setDisplayCookieDialogBox] =
+        useState<boolean>(true);
 
-    useEffect(() => {
+    const checkUserThemePreference = () => {
         if (
             localStorage.getItem("ascf-theme") === "dark" ||
             (!("ascf-theme" in localStorage) &&
@@ -29,6 +29,19 @@ const Layout = ({ children }: propsType) => {
         } else {
             document.documentElement.classList.remove("dark");
         }
+    }
+
+    const checkUserCookieAgreement = () => {
+        if (localStorage.getItem("ascf-cookie-usage")) {
+            setDisplayCookieDialogBox(false);
+        } else {
+            setDisplayCookieDialogBox(true);
+        }
+    }
+
+    useEffect(() => {
+        checkUserThemePreference();
+        checkUserCookieAgreement();
     }, []);
 
     const toggleThemeMode = () => {
@@ -47,7 +60,7 @@ const Layout = ({ children }: propsType) => {
         <>
             <ThemeProvider value={{ theme, setTheme, toggleThemeMode }}>
                 {children.type.name !== "Home" && <Header />}
-                <CookieDialogBox />
+                {displayCookieDialogBox && <CookieDialogBox />}
                 <SupportDialogBox />
                 {children}
                 <Footer />
