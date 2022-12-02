@@ -3,7 +3,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { IoMdMoon, IoMdSunny } from "react-icons/io";
 
-import themeContext from "../contexts/ThemeContext"
+import themeContext from "../contexts/ThemeContext";
+import { checkIsMobile } from "../utils";
 
 type propsType = {
     displayLogo?: boolean;
@@ -42,9 +43,15 @@ const navLinks = [
 
 const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
     const [activeNavLink, setActiveNavLink] = useState<null | string>();
-    const {theme, setTheme, toggleThemeMode} = useContext(themeContext)
+    const { theme, setTheme, toggleThemeMode } = useContext(themeContext);
+    const [isMobile, setIsMobile] = useState<boolean | null>(null);
 
     // REVIEW DEPENDENCY ARRAYS DOCS
+    useEffect(() => {
+        setIsMobile(checkIsMobile());
+        console.log("checked mobile");
+    }, []);
+
     useEffect(() => {
         navLinks.forEach((navLink) => {
             if (global.window?.location.href.includes(navLink.urlFragment)) {
@@ -57,21 +64,21 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
         <nav
             className={`flex ${
                 displayLogo ? "justify-between" : "justify-end py-8"
-            } h-24 items-center pl-4 pr-12`}
+            } h-24 items-center pr-4 md:pl-4 md:pr-12`}
         >
             {displayLogo && (
                 <Link href="/" passHref>
                     <Image
                         src="/images/logo.png"
-                        width="150px"
-                        height="150px"
+                        width={`${isMobile ? "180px" : "150px"}`}
+                        height={`${isMobile ? "180px" : "150px"}`}
                         className="cursor-pointer bg-transparent border-none"
                         alt="ASCF Logo"
                     />
                 </Link>
             )}
             {!displayNavBar && (
-                <ul className={`flex flex-wrap items-center`}>
+                <ul className={`hidden md:flex flex-wrap items-center`}>
                     {navLinks.map((navLink, index) => (
                         <Link
                             href={`/${navLink.urlFragment}`}
@@ -79,7 +86,7 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
                             key={index}
                         >
                             <li
-                                className={`hidden md:block hover:px-4 hover:bg-red-100/50 hover:py-1 ${
+                                className={`hover:px-4 hover:bg-red-100/50 hover:py-1 ${
                                     !displayNavBar && displayLogo
                                         ? "dark:text-white text-ourBlack"
                                         : "text-white"
@@ -92,10 +99,10 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
                             </li>
                         </Link>
                     ))}
-                    <li className="hidden md:block ml-6 px-3 py-2 hover:bg-red-100 bg-white text-ourRed text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
+                    <li className="ml-6 px-3 py-2 hover:bg-red-100 bg-white text-ourRed text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
                         <Link href="/shop">SHOP NOW</Link>
                     </li>
-                    <li className="hidden md:block ml-6 px-5 py-2 hover:bg-red-100 bg-white text-ourRed text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
+                    <li className="ml-6 px-5 py-2 hover:bg-red-100 bg-white text-ourRed text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
                         <Link href="/login">SIGN IN</Link>
                     </li>
                     {theme == "light" ? (
@@ -122,7 +129,7 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
             <div className="flex md:hidden">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6"
+                    className="h-8 w-8 mb-2"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="white"
