@@ -7,18 +7,9 @@ import { GoSearch } from "react-icons/go";
 import { FiXCircle } from "react-icons/fi";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
-import styles from "../../styles/BlogIndex.module.css";
-import { capitalizeString } from "../../utils"
-
-interface blogPostsType {
-    id: string;
-    title: string;
-    date: string;
-    author: string;
-    body: string;
-    imageUrl: string;
-    imageAltText: string;
-}
+import { capitalizeString } from "../../utils";
+import BlogPost from "../../components/BlogPost";
+import type { BlogPostType } from "../../components/BlogPost";
 
 interface sortOptionsType {
     id: string;
@@ -28,7 +19,7 @@ interface sortOptionsType {
 const articleText =
     "Millions of people around the world, including 100,000 in the United States suffer from sickle cell disease, a brutally painful inherited blood disorder with about 30% of them being African descent. Over time, the disease worsens and can cause infections, organ damage, blindness, stroke and early death. Lorem ipsum dolor consectetur, adipisicing elit. Eligendi minima delectus ullam tenetur sed? Laboriosam accusantium, consectetur saepe quia suscipit deserunt modi fugiat omnis amet necessitatibus reiciendis debitis expedita atque! Nam qui ab recusandae veritatis reiciendis ducimus libero velit possimus in. Maiores omnis error esse obcaecati molestiae reiciendis alias dignissimos ad quaerat, hic, quisquam harum quos iste aliquid corporis quasi! Suscipit, optio corrupti! Tempore neque vero ut enim repellat quod fuga? Autem magni ullam iusto quibusdam labore animi cumque maiores consectetur placeat non. Quidem ea blanditiis iusto voluptatem, maiores modi. Ipsum sunt est quidem iure labore commodi ipsa distinctio maiores culpa cumque tempore, sint ea libero expedita mollitia officia voluptates. Doloremque itaque ea quibusdam eum asperiores cupiditate inventore accusantium aliquid!";
 
-const blogPosts: blogPostsType[] = [
+const blogPosts: BlogPostType[] = [
     {
         id: "1",
         title: "A GENETIC CURE FOR SICKLE CELL DISEASE MOVES CLOSER TO REALITY",
@@ -93,7 +84,6 @@ const Blog: NextPage = () => {
     >(null);
     const [searchText, setSearchText] = useState<string>("");
     const [dropdownToggled, setDropdownToggled] = useState<boolean>(false);
-    
 
     return (
         <>
@@ -106,15 +96,15 @@ const Blog: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <section className="w-full">
-                <section className="px-20 py-10 mx-4 flex items-center justify-between bg-ourDarkRed">
-                    <div>
+                <section className="px-4 md:px-20 py-6 md:py-10 md:mx-4 space-y-3 md:space-y-0 flex flex-wrap items-center md:justify-between bg-ourDarkRed">
+                    <div className="text-center md:text-left">
                         <h1 className="font-bold text-4xl mb-2">ASCF BLOG</h1>
                         <h3 className="font-medium text-sm">
                             Stay up-to-date on the progression and treatment of
                             Sickle Cell Disease
                         </h3>
                     </div>
-                    <div className="w-1/2 flex items-center justify-end space-x-6">
+                    <div className="md:w-1/2 flex items-center justify-center md:justify-end space-x-6">
                         <div className="relative w-1/2">
                             <input
                                 ref={searchInput}
@@ -183,36 +173,11 @@ const Blog: NextPage = () => {
                         </div>
                     </div>
                 </section>
-                <section className="w-full px-24 items-center">
-                    {blogPosts.map((post) => (
-                        <Link key={post.id} href="/blog" passHref>
-                            <div className="group w-full mt-12 flex items-center justify-between">
-                                <div className="space-y-6 w-3/4 cursor-pointer">
-                                    <div className="flex justify-start items-center space-x-8">
-                                        <div className="w-3 h-10 bg-ourRed"></div>
-                                        <div>
-                                            <h2 className="font-bold text-xl dark:text-gray-200">
-                                                {post.title}
-                                            </h2>
-                                            <h3 className="italic dark:text-gray-200">
-                                                {post.date} by {post.author}
-                                            </h3>
-                                        </div>
-                                    </div>
-                                    <p
-                                        className={`${styles.postBody} text-sm font-medium text-gray-800 dark:text-stone-400/80 group-hover:text-ourRed transition-colors`}
-                                    >
-                                        {post.body}
-                                    </p>
-                                </div>
-
-                                <img
-                                    src={post.imageUrl}
-                                    className="w-1/5 h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
-                                    alt={post.imageAltText}
-                                />
-                            </div>
-                        </Link>
+                <section className="w-full mt-12 md:mt-0 px-6 md:px-24 items-center">
+                    {blogPosts.map((post, index) => (
+                        <>
+                            <BlogPost key={post.id} hasBottomBorder={(index != blogPosts.length - 1)} post={post} />
+                        </>
                     ))}
                 </section>
             </section>
