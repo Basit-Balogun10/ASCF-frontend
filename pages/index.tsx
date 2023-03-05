@@ -28,7 +28,10 @@ const Home = () => {
                 {!isMobile && <Header displayNavBar={true} />}
                 <section className="md:flex md:flex-row md:flex-nowrap md:my-1">
                     <div
-                        className={`${styles.hero} md:block relative w-full md:w-3/5 h-[40rem] md:h-full md:absolute md:top-0 md:right-0 flex flex-col justify-start bg-blend-overlay bg-no-repeat bg-center bg-contain`}
+                        data-aos={`${isMobile ? "" : "fade-left"}`} // Empty value when isMobile is true fixes bug in navbar animation
+                        data-aos-duration={`${isMobile ? "1000" : "1500"}`}
+                        data-aos-once="true"
+                        className={`${styles.hero} md:block relative w-full md:w-3/5 h-[35rem] md:h-full md:absolute md:top-0 md:right-0 flex flex-col justify-start bg-blend-overlay bg-no-repeat bg-center bg-contain`}
                     >
                         {isMobile ? (
                             <Header displayLogo={true} />
@@ -36,14 +39,19 @@ const Home = () => {
                             <Header displayLogo={false} />
                         )}
                         <div className="md:hidden absolute top-[33%]">
-                            <h1 className="font-poppins text-5xl text-center text-white font-black leading-tight pb-6">
-                                ANISA SICKLE CELL FOUNDATION
+                            <h1 className="font-secularOne text-6xl text-center text-white pb-6">
+                                Anisa Sickle Cell Foundation
                             </h1>
                         </div>
                     </div>
-                    <div className="w-full mt-4 md:mt-0 md:w-2/5 md:px-8">
+                    <div
+                        data-aos="fade-right"
+                        data-aos-duration="1500"
+                        data-aos-once="true"
+                        className="w-full mt-4 md:mt-0 md:w-2/5 md:px-8"
+                    >
                         <div className="px-4 md:px-0 md:w-2/3 md:mx-auto text-center md:text-left">
-                            <h1 className="hidden md:block capitalize text-4xl font-black leading-tight pb-6">
+                            <h1 className="hidden md:block font-secularOne font-extrabold capitalize text-4xl leading-tight pb-6">
                                 anisa sickle <br></br> cell foundation
                             </h1>
 

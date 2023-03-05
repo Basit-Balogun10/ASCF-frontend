@@ -90,6 +90,8 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
         >
             {mobileNav && (
                 <IoMdClose
+                    data-aos="fade-left"
+                    data-aos-duration="500"
                     className="mobile-nav-close z-[150] fixed md:hidden top-8 right-6 w-10 h-10 text-ourRed transitio-all ease-in-out"
                     onClick={handleMobileNavToggle}
                 />
@@ -97,6 +99,8 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
             {displayLogo && (
                 <Link href="/" passHref>
                     <Image
+                        data-aos="fade-right"
+                        data-aos-duration="1500"
                         src="/images/logo.png"
                         width={`${isMobile ? "180px" : "150px"}`}
                         height={`${isMobile ? "180px" : "150px"}`}
@@ -107,13 +111,13 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
             )}
             {!displayNavBar && (
                 <ul
-                    className={`${
-                        mobileNav
-                            ? "h-full w-full visible"
-                            : "h-0 invisible md:visible"
-                    } 
+                    data-aos="fade-left"
+                    data-aos-duration="1500"
+                    
+                    //!FIX: Navbar does not animate out on mobile because it gets 'hidden' once mobileNav is false
+                    className={`${mobileNav ? "h-screen w-screen" : "hidden"} 
                             z-[100] h-screen fixed top-0 right-0 flex flex-col items-left justify-center pl-2 pb-16 space-y-8 md:bg-transparent md:dark:bg-transparent bg-gray-100 dark:bg-black
-                            md:h-[initial] md:w-[initial] md:static md:flex md:flex-row md:space-y-0 md:bg-[initial] md:transitio-none
+                            md:h-[initial] md:w-[initial] md:static md:flex md:flex-row md:justify-start md:items-center md:space-y-0 md:pl-0 md:pb-0 md:bg-[initial] md:transition-none
                             `}
                 >
                     {navLinks.map((navLink, index) => (
@@ -136,7 +140,7 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
                                 } text-base md:text-[0.8rem] tracking-wide ${
                                     activeNavLink === navLink.urlFragment &&
                                     "underline decoration-ourRed decoration-4 underline-offset-4"
-                                } hover:no-underline font-extrabold ml-6 cursor-pointer rounded-md transitio-all ease-in-out`}
+                                } hover:no-underline font-extrabold ml-6 cursor-pointer rounded-md transition-all ease-in-out`}
                             >
                                 <p>{navLink.title.toUpperCase()}</p>
                             </li>
@@ -170,8 +174,8 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
                 </ul>
             )}
             <IoMdMenu
-                // data-aos="fade-left"
-                // data-aos-duration="500"
+                data-aos="fade-left"
+                data-aos-duration="1500"
                 className="mobile-nav-open md:hidden absolute top-7 right-7 w-9 h-9 text-ourRed"
                 onClick={handleMobileNavToggle}
             />

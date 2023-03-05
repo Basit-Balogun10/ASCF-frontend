@@ -21,7 +21,15 @@ export interface BlogPostType {
 const BlogPost = ({ hasBottomBorder, post }: propsType) => {
     return (
         <Link href="/blog" passHref>
-            <div className={`group w-full mt-6 pb-6 flex flex-wrap items-center justify-between ${hasBottomBorder ? "border-b-4 md:border-b-[3px] border-ourRed border-dashed" : ""}`}>
+            <div
+                data-aos="fade-up"
+                data-aos-duration="1500"
+                className={`group w-full mt-6 pb-6 flex flex-wrap items-center justify-between ${
+                    hasBottomBorder
+                        ? "border-b-4 md:border-b-[3px] border-ourRed border-dashed"
+                        : ""
+                }`}
+            >
                 <div className="space-y-6 md:w-3/4 cursor-pointer">
                     <div className="flex justify-start items-center md:space-x-8">
                         <div className="hidden md:block w-3 h-10 bg-ourRed"></div>

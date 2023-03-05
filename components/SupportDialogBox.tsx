@@ -10,7 +10,11 @@ const SupportDialogBox = () => {
     return (
         <div className="hidden md:block fixed justify-center items-center bottom-5 right-8 z-50">
             {supportDialogBoxOpened ? (
-                <div className="relative bg-white dark:bg-ourBlack border-2 dark:border-gray-500 p-6 space-y-3 shadow-md rounded-md">
+                <div
+                    data-aos="fade-up"
+                    data-aos-duration="1000"
+                    className="relative bg-white dark:bg-ourBlack border-2 dark:border-gray-500 p-6 space-y-3 shadow-md rounded-md"
+                >
                     <div
                         onClick={() => setSupportDialogBoxOpened(false)}
                         className="absolute right-2 top-1 p-1 hover:bg-gray-200 dark:hover:bg-gray-100/20 cursor-pointer hover:rounded-full transition-all"

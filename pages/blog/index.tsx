@@ -96,15 +96,23 @@ const Blog: NextPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <section className="w-full">
-                <section className="px-4 md:px-20 py-6 md:py-10 md:mx-4 space-y-3 md:space-y-0 flex flex-wrap items-center md:justify-between bg-ourDarkRed">
-                    <div className="text-center md:text-left">
+                <section className="h-min px-4 md:px-20 py-6 md:py-10 md:mx-4 space-y-3 md:space-y-0 flex flex-wrap items-center md:justify-between bg-ourDarkRed transition-all">
+                    <div
+                        data-aos="fade-right"
+                        data-aos-duration="1500"
+                        className="text-center md:text-left"
+                    >
                         <h1 className="font-bold text-4xl mb-2">ASCF BLOG</h1>
                         <h3 className="font-medium text-sm">
                             Stay up-to-date on the progression and treatment of
                             Sickle Cell Disease
                         </h3>
                     </div>
-                    <div className="md:w-1/2 flex items-center justify-center md:justify-end space-x-6">
+                    <div
+                        data-aos="fade-left"
+                        data-aos-duration="1500"
+                        className="md:w-1/2 flex items-center justify-center md:justify-end space-x-6"
+                    >
                         <div className="relative w-1/2">
                             <input
                                 ref={searchInput}
@@ -139,7 +147,11 @@ const Blog: NextPage = () => {
                             </div>
 
                             {dropdownToggled && (
-                                <div className="mt-4 bg-white dark:bg-ourBlack border border-gray-400 dark:border-gray-100/30 rounded-md shadow-md">
+                                <div
+                                    data-aos="fade-up"
+                                    data-aos-duration="1000"
+                                    className="mt-4 bg-white dark:bg-ourBlack rounded-md shadow-md"
+                                >
                                     <ul className="space-y-1">
                                         {sortOptions.map((sortOption) => (
                                             <Link
@@ -176,7 +188,11 @@ const Blog: NextPage = () => {
                 <section className="w-full mt-12 md:mt-0 px-6 md:px-24 items-center">
                     {blogPosts.map((post, index) => (
                         <>
-                            <BlogPost key={post.id} hasBottomBorder={(index != blogPosts.length - 1)} post={post} />
+                            <BlogPost
+                                key={post.id}
+                                hasBottomBorder={index != blogPosts.length - 1}
+                                post={post}
+                            />
                         </>
                     ))}
                 </section>
