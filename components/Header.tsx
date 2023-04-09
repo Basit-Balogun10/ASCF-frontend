@@ -7,6 +7,7 @@ import themeContext from "../contexts/ThemeContext";
 import { checkIsMobile } from "../utils";
 
 type propsType = {
+    animate?: boolean;
     displayLogo?: boolean;
     displayNavBar?: boolean;
 };
@@ -20,13 +21,8 @@ interface navLinksType {
 // todo: WHERE TO PUT THIS? HERE OR IN COMPONENT (BEFORE USEEFECT)
 const navLinks = [
     {
-        title: "home",
-        urlFragment: "",
-        isActive: global.window?.location.href.includes(""),
-    },
-    {
         title: "about us",
-        urlFragment: "about",
+        urlFragment: "",
         isActive: global.window?.location.href.includes("about"),
     },
     {
@@ -41,7 +37,7 @@ const navLinks = [
     },
 ];
 
-const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
+const Header = ({ animate = true, displayNavBar = false, displayLogo = true }: propsType) => {
     const [activeNavLink, setActiveNavLink] = useState<null | string>();
     const { theme, setTheme, toggleThemeMode } = useContext(themeContext);
     const [isMobile, setIsMobile] = useState<boolean | null>(null);
@@ -99,8 +95,8 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
             {displayLogo && (
                 <Link href="/" passHref>
                     <Image
-                        data-aos="fade-right"
-                        data-aos-duration="1500"
+                        data-aos={`${animate ? "fade-right" : ""}`}
+                        data-aos-duration={`${animate ? "1500" : ""}`}
                         src="/images/logo.png"
                         width={`${isMobile ? "180px" : "150px"}`}
                         height={`${isMobile ? "180px" : "150px"}`}
@@ -111,9 +107,8 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
             )}
             {!displayNavBar && (
                 <ul
-                    data-aos="fade-left"
-                    data-aos-duration="1500"
-                    
+                    data-aos={`${animate ? "fade-left" : ""}`}
+                    data-aos-duration={`${animate ? "1500" : ""}`}
                     //!FIX: Navbar does not animate out on mobile because it gets 'hidden' once mobileNav is false
                     className={`${mobileNav ? "h-screen w-screen" : "hidden"} 
                             z-[100] h-screen fixed top-0 right-0 flex flex-col items-left justify-center pl-2 pb-16 space-y-8 md:bg-transparent md:dark:bg-transparent bg-gray-100 dark:bg-black
@@ -127,6 +122,7 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
                             key={index}
                         >
                             <li
+                                onClick={() => toggleMobileNav(false)}
                                 className={`
                                 ${
                                     mobileNav
@@ -146,10 +142,10 @@ const Header = ({ displayNavBar = false, displayLogo = true }: propsType) => {
                             </li>
                         </Link>
                     ))}
-                    <li className="mr-auto md:mr-0 ml-6 px-3 py-2 hover:bg-red-100 bg-white text-ourRed text-base md:text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
+                    <li className="mr-auto md:mr-0 ml-6 px-3 py-2 bg-ourBlack/95 dark:bg-white hover:bg-black dark:hover:bg-red-100 text-ourRed text-base md:text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black transition-colors ease-in-out">
                         <Link href="/shop">SHOP NOW</Link>
                     </li>
-                    <li className="mr-auto md:mr-0 ml-6 px-5 py-2 hover:bg-red-100 bg-white text-ourRed text-base md:text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black">
+                    <li className="mr-auto md:mr-0 ml-6 px-5 py-2 bg-ourBlack/95 dark:bg-white hover:bg-black dark:hover:bg-red-100 text-ourRed text-base md:text-[0.8rem] tracking-wide font-extrabold rounded cursor-pointer shadow-md shadow-black transition-colors ease-in-out">
                         <Link href="/login">SIGN IN</Link>
                     </li>
                     {theme == "light" ? (

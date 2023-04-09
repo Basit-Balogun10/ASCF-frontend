@@ -5,10 +5,10 @@ import styles from "../styles/BlogIndex.module.css";
 
 type propsType = {
     hasBottomBorder: boolean;
-    post: BlogPostType;
+    post: blogPostType;
 };
 
-export interface BlogPostType {
+export interface blogPostType {
     id: string;
     title: string;
     date: string;
@@ -42,13 +42,11 @@ const BlogPost = ({ hasBottomBorder, post }: propsType) => {
                             </h3>
                         </div>
                     </div>
-                    <div className="">
-                        <img
-                            src={post.imageUrl}
-                            className="md:hidden h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
-                            alt={post.imageAltText}
-                        />
-                    </div>
+                    <img
+                        src={post.imageUrl}
+                        className="md:hidden h-full cursor-pointer group-hover:scale-110 rounded transition-transform"
+                        alt={post.imageAltText}
+                    />
                     <p
                         className={`${styles.postBody} text-sm font-medium text-gray-800 dark:text-stone-400/80 group-hover:text-ourRed transition-colors`}
                     >
