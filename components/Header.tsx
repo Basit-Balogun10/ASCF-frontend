@@ -98,8 +98,8 @@ const Header = ({ animate = true, displayNavBar = false, displayLogo = true }: p
                         data-aos={`${animate ? "fade-right" : ""}`}
                         data-aos-duration={`${animate ? "1500" : ""}`}
                         src="/images/logo.png"
-                        width={`${isMobile ? "180px" : "150px"}`}
-                        height={`${isMobile ? "180px" : "150px"}`}
+                        width={`${isMobile ? 180 : 150}`}
+                        height={`${isMobile ? 180 : 150}`}
                         className="cursor-pointer bg-transparent border-none"
                         alt="ASCF Logo"
                     />
