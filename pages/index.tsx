@@ -77,7 +77,7 @@ const Home = () => {
                 </>
             ) : (
                 // TODO: WILL LIKE THIS SECTION TO ANIMATE OUT AFTER 'LEARN MORE' BTN IS CLICKED
-                <section className="w-full md:h-screen md:relative">
+                <section className="w-full md:h-screen md:relative overflow-hidden">
                     {!isMobile && <Header displayNavBar={true} />}
                     <section className="md:flex md:flex-row md:flex-nowrap md:my-1">
                         <div

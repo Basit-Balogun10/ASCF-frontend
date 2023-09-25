@@ -47,7 +47,7 @@ const BlogPostDetail = () => {
                 data-aos-duration="1500"
                 className="flex flex-wrap md:flex-nowrap flex-col-reverse md:flex-row items-start justify-between w-full md:space-x-12 mt-8 md:mt-12 px-6 md:px-24"
             >
-                <div className="md:basis-3/4 text-base md:text-sm text-gray-500 dark:text-stone-400/80">
+                <div className="md:basis-3/4 font-raleway text-base md:text-[0.95rem] text-gray-500 dark:text-stone-400/80">
                     <p className="text-black dark:text-gray-200">
                         Lorem ipsum dolor sit amet consectetur, adipisicing
                         elit. Perferendis, laudantium reprehenderit eaque quo

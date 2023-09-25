@@ -99,8 +99,8 @@ const EventDetail = () => {
                 data-aos-duration="1500"
                 className="flex flex-wrap md:flex-nowrap flex-col-reverse md:flex-row items-start justify-between w-full md:space-x-12 mt-8 md:mt-12 px-6 md:px-24"
             >
-                <div className="md:basis-3/4">
-                    <div className="pb-8 mb-8 text-base md:text-sm text-gray-500 dark:text-stone-400/80 border-b border-black/60 dark:border-stone-400/80 tracking-wide">
+                <div className="md:basis-3/5">
+                    <div className="pb-8 mb-8 font-raleway text-base md:text-[0.95rem] text-gray-500 dark:text-stone-400/80 border-b border-black/60 dark:border-stone-400/80">
                         <p className="text-black dark:text-gray-200">
                             Lorem ipsum dolor sit amet consectetur, adipisicing
                             elit. Perferendis, laudantium reprehenderit eaque
@@ -139,39 +139,42 @@ const EventDetail = () => {
                     </div>
                     <div>
                         <p>
-                            {
-                                (event.category == "virtual" ? (
-                                    <>
-                                        <span className="font-bold">
-                                            Meeting Link:{" "}
+                            {event.category == "virtual" ? (
+                                <>
+                                    <span className="font-bold">
+                                        Meeting Link:{" "}
+                                    </span>
+                                    <Link href="https://zoom.com" passHref>
+                                        <span className="hover:underline text-ourRed text-sm cursor-pointer">
+                                            https://zoom.com
                                         </span>
-                                        <Link href="https://zoom.com" passHref>
-                                            <span className="hover:underline text-ourRed text-sm cursor-pointer">
-                                                https://zoom.com
-                                            </span>
-                                        </Link>
-                                    </>
-                                ) : (
-                                    <>
-                                        <span className="font-bold">
-                                            Venue:{" "}
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <span className="font-bold">Venue: </span>
+                                    <Link href="https://zoom.com" passHref>
+                                        <span className="hover:underline text-ourRed text-sm cursor-pointer">
+                                            Get direction
                                         </span>
-                                        <Link href="https://zoom.com" passHref>
-                                            <span className="hover:underline text-ourRed text-sm cursor-pointer">
-                                                Get direction
-                                            </span>
-                                        </Link>
-                                    </>
-                                ))
-                            }
+                                    </Link>
+                                </>
+                            )}
                         </p>
                     </div>
                 </div>
-                <img
-                    src={event.imageUrl}
-                    className={`mb-6 md:basis-1/4 h-64 rounded`}
-                    alt={event.imageAltText}
-                />
+                <div className="">
+                    <img
+                        src={event.imageUrl}
+                        className={`mb- 6 h-64 rounded`}
+                        alt={event.imageAltText}
+                    />
+                    <p>Frequency: One-time or Multi-day</p>
+                    <p>Format: In-person or Virtual</p>
+                    <p>Status: Upcoming or Past or Ongoing</p>
+                    <p>Time (Start to end)</p>
+                    <p>Event Link | Venue</p>
+                </div>
             </section>
         </>
     );

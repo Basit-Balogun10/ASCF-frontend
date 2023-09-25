@@ -60,10 +60,11 @@ const Layout = ({ children }: propsType) => {
         <>
             <ThemeProvider value={{ theme, setTheme, toggleThemeMode }}>
                 {children.type.name !== "Home" && <Header />}
-                {displayCookieDialogBox && <CookieDialogBox />}
+                {/* Re-activate cookie dialog box later if there's a need to */}
+                {/* {displayCookieDialogBox && <CookieDialogBox />} */}
                 <SupportDialogBox />
                 {children}
-                <Footer />
+                {/* <Footer /> */}
             </ThemeProvider>
         </>
     );
