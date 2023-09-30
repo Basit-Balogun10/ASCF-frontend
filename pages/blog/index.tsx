@@ -5,6 +5,7 @@ import Head from "next/head";
 
 import { GoSearch } from "react-icons/go";
 import { FiXCircle } from "react-icons/fi";
+import { MdClose } from "react-icons/md";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
 
 import { capitalizeString } from "../../utils";
@@ -100,6 +101,8 @@ const BLOG_INDEX_DESCRIPTION_TEXT =
 const BLOG_PAGE_TITLE = "ASCF BLOG";
 
 const Blog: NextPage = () => {
+    const [menuIsActive, setMenuIsActive] = useState(false);
+
     const searchInput = useRef<HTMLInputElement | null>(null);
     const [searchInputFocused, setSearchInputFocused] = useState<
         boolean | null
@@ -124,7 +127,20 @@ const Blog: NextPage = () => {
                 pageContents={blogPosts}
                 pageTitle={BLOG_PAGE_TITLE}
             >
-                <SortOrFilter />
+                <div className="flex-auto flex items-center justify-center md:justify-end space-x-2">
+                    <SortOrFilter
+                        menuIsActive={menuIsActive}
+                        setMenuIsActive={setMenuIsActive}
+                    />
+                    {menuIsActive && (
+                        <MdClose
+                            data-aos="fade-up"
+                            data-aos-duration="500"
+                            onClick={() => setMenuIsActive(false)}
+                            className="w-7 h-7 ml-4 cursor-pointer"
+                        />
+                    )}
+                </div>
             </PageLayout>
         </>
     );

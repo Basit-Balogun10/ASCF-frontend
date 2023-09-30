@@ -1,4 +1,5 @@
 import type { NextPage } from "next";
+import { useState } from "react";
 import Head from "next/head";
 
 import { IoCalendarOutline } from "react-icons/io5";
@@ -6,6 +7,7 @@ import { IoCalendarOutline } from "react-icons/io5";
 import PageLayout from "../../components/PageLayout";
 import { pageContentType } from "../../components/PageContent";
 import SortOrFilter from "../../components/SortOrFilter";
+import { MdClose } from "react-icons/md";
 
 const articleText =
     "Millions of people around the world, including 100,000 in the United States suffer from sickle cell disease, a brutally painful inherited blood disorder with about 30% of them being African descent. Over time, the disease worsens and can cause infections, organ damage, blindness, stroke and early death. Lorem ipsum dolor consectetur, adipisicing elit. Eligendi minima delectus ullam tenetur sed? Laboriosam accusantium, consectetur saepe quia suscipit deserunt modi fugiat omnis amet necessitatibus reiciendis debitis expedita atque! Nam qui ab recusandae veritatis reiciendis ducimus libero velit possimus in. Maiores omnis error esse obcaecati molestiae reiciendis alias dignissimos ad quaerat, hic, quisquam harum quos iste aliquid corporis quasi! Suscipit, optio corrupti! Tempore neque vero ut enim repellat quod fuga? Autem magni ullam iusto quibusdam labore animi cumque maiores consectetur placeat non. Quidem ea blanditiis iusto voluptatem, maiores modi. Ipsum sunt est quidem iure labore commodi ipsa distinctio maiores culpa cumque tempore, sint ea libero expedita mollitia officia voluptates. Doloremque itaque ea quibusdam eum asperiores cupiditate inventore accusantium aliquid!";
@@ -91,6 +93,8 @@ const EVENT_PAGE_DESCRIPTION_TEXT =
 const EVENT_PAGE_TITLE = "ASCF EVENTS";
 
 const Event: NextPage = () => {
+    const [menuIsActive, setMenuIsActive] = useState(false);
+
     return (
         <>
             <Head>
@@ -109,13 +113,25 @@ const Event: NextPage = () => {
                 pageTitle={EVENT_PAGE_TITLE}
             >
                 <div className="flex-auto flex items-center justify-center md:justify-end space-x-2">
-
-                <SortOrFilter />
-                <IoCalendarOutline
-                    data-aos="fade-left"
-                    data-aos-duration="1500"
-                    className="hidden md:block w-24 h-24 text-ourBlack dark:text-gray-200"
-                />
+                    <SortOrFilter
+                        menuIsActive={menuIsActive}
+                        setMenuIsActive={setMenuIsActive}
+                    />
+                    {menuIsActive ? (
+                        <MdClose
+                            data-aos="fade-up"
+                            data-aos-duration="500"
+                            onClick={() => setMenuIsActive(false)}
+                            className="w-7 h-7 ml-4 cursor-pointer"
+                        />
+                    ) : (
+                        <IoCalendarOutline
+                            data-aos="fade-left"
+                            data-aos-duration="1500"
+                            data-aos-once={true}
+                            className="hidden md:block w-24 h-24 text-ourBlack dark:text-gray-200"
+                        />
+                    )}
                 </div>
             </PageLayout>
         </>
