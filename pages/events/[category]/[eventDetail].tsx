@@ -169,7 +169,7 @@ const EventDetail = () => {
                         className={`mb- 6 h-64 rounded`}
                         alt={event.imageAltText}
                     />
-                    <p>Frequency: One-time or Multi-day</p>
+                    <p>Structure: One-time or Multi-day</p>
                     <p>Format: In-person or Virtual</p>
                     <p>Status: Upcoming or Past or Ongoing</p>
                     <p>Time (Start to end)</p>

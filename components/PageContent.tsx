@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { FaHeart, FaUsers, FaComments } from "react-icons/fa";
+import { FaHeart, FaUsers } from "react-icons/fa";
+import { BiCommentDetail } from "react-icons/bi";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 import styles from "../styles/PageContent.module.css";
@@ -104,7 +105,7 @@ const PageContent = ({
                                             </span>
                                         )}
                                     </h3>
-                                    <div className="invisible group-hover:visible scale-75 group-hover:scale-100 flex items-center space-x-4 transition-transform duration-500 ease-in-out">
+                                    <div className="flex items-center space-x-4 invisible group-hover:visible scale-75 group-hover:scale-100 transition-transform duration-500 ease-in-out">
                                         <span
                                             className="flex items-center space-x-2"
                                             title="Like"
@@ -115,13 +116,13 @@ const PageContent = ({
                                                 onClick={(e) =>
                                                     handleLike(e, content.id)
                                                 }
-                                                className="w-6 h-6 text-ourRed cursor-pointer"
+                                                className="w-6 h-6 cursor-pointer"
                                             />
                                         </span>
                                         {content.type == "blog" && (
                                             <span className="flex items-center space-x-2">
                                                 <span>{content.comments}</span>
-                                                <FaComments className="w-6 h-6" />
+                                                <BiCommentDetail className="w-6 h-6" />
                                             </span>
                                         )}
                                         {content.type == "event" && (
@@ -183,7 +184,7 @@ const PageContent = ({
                                         {content.type == "blog" && (
                                             <span className="flex items-center space-x-2">
                                                 <span>{content.comments}</span>
-                                                <FaComments className="w-6 h-6 " />
+                                                <BiCommentDetail className="w-6 h-6 " />
                                             </span>
                                         )}
                                         {content.type == "event" && (
