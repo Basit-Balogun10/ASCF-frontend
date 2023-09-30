@@ -35,7 +35,6 @@ type propsType = {
     href: string;
 };
 
-
 const PageContent = ({
     content,
     hasBottomBorder,
@@ -48,7 +47,6 @@ const PageContent = ({
         setIsMobile(checkIsMobile());
     }, []);
 
-
     if (!content.type) {
         content.type = "";
     }
@@ -57,7 +55,9 @@ const PageContent = ({
         content.category = "";
     }
 
-    const LINK_TEMPLATE = `/${href}/${content.category}/${content.title.toLowerCase() + "-" + content.id}`
+    const LINK_TEMPLATE = `/${href}/${content.category}/${
+        content.title.toLowerCase() + "-" + content.id
+    }`;
 
     const handleLike = (e: React.MouseEvent, contentId: string) => {
         e.preventDefault();
@@ -72,7 +72,7 @@ const PageContent = ({
                 data-aos-offset="100"
                 className={`${
                     content.imageUrl ? "group" : ""
-                } w-full mt-6 pb-6 flex flex-wrap items-center justify-between ${
+                } group w-full mt-6 pb-6 flex flex-wrap items-center justify-between ${
                     hasBottomBorder
                         ? "border-b-4 md:border-b-[3px] border-ourRed border-dashed"
                         : ""
@@ -104,7 +104,7 @@ const PageContent = ({
                                             </span>
                                         )}
                                     </h3>
-                                    <div className="flex items-center space-x-4">
+                                    <div className="invisible group-hover:visible scale-75 group-hover:scale-100 flex items-center space-x-4 transition-transform duration-500 ease-in-out">
                                         <span
                                             className="flex items-center space-x-2"
                                             title="Like"
@@ -121,7 +121,7 @@ const PageContent = ({
                                         {content.type == "blog" && (
                                             <span className="flex items-center space-x-2">
                                                 <span>{content.comments}</span>
-                                                <FaComments className="w-6 h-6 " />
+                                                <FaComments className="w-6 h-6" />
                                             </span>
                                         )}
                                         {content.type == "event" && (
@@ -133,7 +133,7 @@ const PageContent = ({
                                                     <span>
                                                         {content.attendees}
                                                     </span>
-                                                    <FaUsers className="w-6 h-6 " />
+                                                    <FaUsers className="w-6 h-6" />
                                                 </span>
                                             </>
                                         )}
@@ -217,7 +217,7 @@ const PageContent = ({
                         src={content.imageUrl}
                         className={`hidden md:block md:w-1/5 h-full ${
                             content.imageUrl ? "cursor-pointer" : ""
-                        } hover:scale-110 group-hover:scale-110 rounded transition-transform`}
+                        } hover:scale-110 group-hover:scale-110 rounded transition-transform duration-500 ease-in-out`}
                         alt={content.imageAltText}
                     />
                 )}
